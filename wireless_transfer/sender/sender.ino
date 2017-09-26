@@ -45,6 +45,8 @@ void loop()
   Mirf.setTADDR((byte *)"Rec01");
   Mirf.send(data);
   //while死循环等待发送完毕，才能进行下一步操作。
+  Serial.println(adata);
+  
   while (Mirf.isSending()) {}
   delay(20);
 }

@@ -31,6 +31,7 @@ void setup()
   Serial.println("I'm Receiver...");
 }
 
+
 void loop()
 {
   //定义一个暂存数组，大小为Mirf.payload。
