@@ -7,7 +7,7 @@ void setup() {
   Serial.begin(9600);
   Mirf.spi = &MirfHardwareSpi;
   Mirf.init();
-  Mirf.setRADDR((byte *)"receiver1"); // 标记本地名，用于接收
+  Mirf.setRADDR((byte *)"rec1"); // 标记本地名，用于接收
   Mirf.payload = 5;
   Mirf.channel = 3;
   Mirf.config();
@@ -15,16 +15,22 @@ void setup() {
 
 void loop() {
   byte data[Mirf.payload];
-  if(!Mirf.isSending() && Mirf.dataReady()) { 
+  if (!Mirf.isSending() && Mirf.dataReady()) {
     Mirf.getData(data);
     int i;
-    String Temp;
+    String Temp = data;
+    Serial.println(Temp);
+    
     for (i = 0; i < Mirf.payload; i++) //把收到的信息拼起来，到一个串里面
     {
+      //Serial.println(data[i]);
       Temp += char(data[i]);
     }
     Serial.print("Get:");
     Serial.print(Mirf.payload);
     Serial.print(" ");
     Serial.println(Temp);
+    delay(1000);
   }
+
+}
