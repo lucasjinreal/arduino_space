@@ -23,17 +23,12 @@ void loop() {
   Mirf.setTADDR((byte *)"server1");
 
   // this is data to be sent, send 1314 to server forever!!!
-  unsigned int data = 1314;
+  unsigned int data = 1714;
   Mirf.send((byte *)&data);
 
   while (Mirf.isSending()) {
   }
   Serial.println("Finished sending");
-  delay(10);
-  while (!Mirf.dataReady()) {
-    Serial.println("can not connect to server1");
-  }
-  Serial.println("data sent");
   delay(1000);
 }
 
